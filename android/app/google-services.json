@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "210149733897",
+    "project_id": "sappludable-7f2dc",
+    "storage_bucket": "sappludable-7f2dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210149733897:android:d00e0f7721761ef7adaad8",
+        "android_client_info": {
+          "package_name": "com.example.sappludable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210149733897-aqopd78itaccimkk5cfd9pme9bq3hh2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sappludable",
+            "certificate_hash": "69984bea3a985e1aa9a6dd72da9c6a297e8f38c3"
+          }
+        },
+        {
+          "client_id": "210149733897-70c6ilbafb7ufup8ilnqhgeac23nag7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3UHhSGIhdT-9jsI4fWd35urZBQ4A8Mew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210149733897-70c6ilbafb7ufup8ilnqhgeac23nag7s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
