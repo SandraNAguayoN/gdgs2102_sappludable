@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         automaticallyImplyLeading: false, //Para quitar flecha de navegacion a otras pantallas
         title: Text(
           'Bienvenido a sAppludable',
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           fontSize: 20,
         ),
         ),
-      ),
+      ),*/
       body: Container( //body: Center(
     decoration: BoxDecoration(
     gradient: LinearGradient(
@@ -35,23 +35,38 @@ class HomePage extends StatelessWidget {
     child:Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           SizedBox(
             height: 100,
           ),
+
+          Image(
+              image: AssetImage(
+                  'assets/images/logo_1.png'
+              ),
+          ),
+
+          SizedBox(
+            height: 100,
+          ),
+
+
           Container(
             child: SignInButtonBuilder(
-              shape: RoundedRectangleBorder(side: BorderSide(
-                  color: Colors.green,
-                  width: 1,
-                  style: BorderStyle.solid
-              ), borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.green,
+                    width: 1,
+                    style: BorderStyle.solid
+                  ),
+              borderRadius: BorderRadius.circular(10)),
               icon: Icons.person_add,
               backgroundColor: Colors.blueAccent,
               text: 'Registrarse',
               fontSize: 20,
               onPressed: () => Get.toNamed("/registerpage"),
             ),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(5),
             alignment: Alignment.center,
           ),
           Row(
@@ -80,7 +95,7 @@ class HomePage extends StatelessWidget {
               fontSize: 20,
               onPressed: () => Get.toNamed("/loginpage"),
             ),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(5),
             alignment: Alignment.center,
           ),
         ],

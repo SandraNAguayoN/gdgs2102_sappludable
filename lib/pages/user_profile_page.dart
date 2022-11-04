@@ -11,7 +11,7 @@ class UserProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perfil de usuario'),
+        title: Text('Perfil'),
         actions: <Widget>[
           Builder(
             builder: (BuildContext context) {

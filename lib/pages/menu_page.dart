@@ -6,8 +6,39 @@ import 'package:sappludable/pages/calculator_imc_page.dart';
 import 'package:sappludable/pages/recipes_page.dart';
 import 'package:sappludable/pages/routines_page.dart';
 import 'package:sappludable/pages/user_profile_page.dart';
+import 'package:sappludable/pages/notifications_page.dart';
+import 'package:sappludable/pages/foods_page.dart';
 
-import 'foods_page.dart';
+//Importaciones para notificaciones
+import 'package:firebase_core/firebase_core.dart';
+import 'package:sappludable/providers/firebase_notifications_options.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+  print("Handling a background message: ${message.messageId}");
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Got a message whilst in the foreground!');
+    print('Message data: ${message.data}');
+
+    if (message.notification != null) {
+      print('Message also contained a notification: ${message.notification}');
+    }
+  });
+  runApp(MenuPage());
+}
 
 class MenuPage extends StatelessWidget {
   final controller = Get.put(LoginController());
@@ -19,21 +50,45 @@ class MenuPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Inicio'),
         actions: <Widget>[
+          Container(
+            height: 50,
+            color: Colors.grey,
+            child: TextButton.icon(
+              icon: Icon(
+                Icons.notifications_rounded,
+                size: 24.0,
+              ),
+              label: Text(''),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+
+              onPressed: () async {
+                //controller.signOut();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationsPage()),
+                );
+
+              },
+            ),
+          ),
           Builder(
             builder: (BuildContext context) {
               return TextButton.icon(
-                icon: Icon(
-                  Icons.logout_outlined,
-                  size: 24.0,
-                ),
-                label: Text('Cerrar sesión'),
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                ),
-                onPressed: () async {
-                  controller.signOut();
-                },
-              );
+                      icon: Icon(
+                        Icons.logout_outlined,
+                        size: 24.0,
+                      ),
+                      label: Text('Cerrar sesión'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () async {
+                        controller.signOut();
+                      },
+                    );
+
             },
           ),
         ],
@@ -87,7 +142,8 @@ class NavigationDrawer extends StatelessWidget {
               children: const [
                 CircleAvatar(
                   radius: 52,
-                  backgroundImage: NetworkImage(''),
+                  backgroundImage: AssetImage('assets/images/profile_1.png'),
+                  backgroundColor: Colors.white70,
                 ),
                 SizedBox(height: 12),
                 Text(
