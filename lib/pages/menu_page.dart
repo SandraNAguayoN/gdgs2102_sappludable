@@ -50,7 +50,7 @@ class MenuPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Inicio'),
         actions: <Widget>[
-          Container(
+          /*Container(
             height: 50,
             color: Colors.grey,
             child: TextButton.icon(
@@ -72,7 +72,7 @@ class MenuPage extends StatelessWidget {
 
               },
             ),
-          ),
+          ),*/
           Builder(
             builder: (BuildContext context) {
               return TextButton.icon(
