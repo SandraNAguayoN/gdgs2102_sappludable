@@ -13,14 +13,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   //runApp(const MyApp());
-  runApp(
-    GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/homepage',
-      navigatorKey: Get.key,
-      getPages: routes(),
-    )
-  );
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    initialRoute: '/homepage',
+    navigatorKey: Get.key,
+    getPages: routes(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +28,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, //Quita la etiqueta 'Debug' del encabezado de la app
+      debugShowCheckedModeBanner:
+          false, //Quita la etiqueta 'Debug' del encabezado de la app
       title: 'sAppludable',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -44,12 +43,11 @@ class MyApp extends StatelessWidget {
       //home: const MyHomePage(title: 'SAppludable'), //Título del encabezado de la app
       initialRoute: LoginPage.id,
       routes: {
-        LoginPage.id:(_) => LoginPage(), //Página de inicio de sesión
+        LoginPage.id: (_) => LoginPage(), //Página de inicio de sesión
       },
     );
   }
 }
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -77,14 +75,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          stops: [0.2, 0.5, 0.7, 1],
-          colors: [Colors.red, Colors.purple, Colors.yellow, Colors.blue],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.2, 0.5, 0.7, 1],
+            colors: [Colors.red, Colors.purple, Colors.yellow, Colors.blue],
           ),
         ),
         child: Center(
-          /*mainAxisAlignment: MainAxisAlignment.center,
+            /*mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
@@ -94,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
           ],*/
-        ),
+            ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,

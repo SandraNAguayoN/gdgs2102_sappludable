@@ -58,7 +58,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '910516599381',
     projectId: 'udemy-ac28e',
     storageBucket: 'udemy-ac28e.appspot.com',
-    iosClientId: '910516599381-t765u6d36k1ejen9lt5gogckmcnpeuav.apps.googleusercontent.com',
+    iosClientId:
+        '910516599381-t765u6d36k1ejen9lt5gogckmcnpeuav.apps.googleusercontent.com',
     iosBundleId: 'com.example.fcmtest',
   );
 
@@ -68,7 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '910516599381',
     projectId: 'udemy-ac28e',
     storageBucket: 'udemy-ac28e.appspot.com',
-    iosClientId: '910516599381-t765u6d36k1ejen9lt5gogckmcnpeuav.apps.googleusercontent.com',
+    iosClientId:
+        '910516599381-t765u6d36k1ejen9lt5gogckmcnpeuav.apps.googleusercontent.com',
     iosBundleId: 'com.example.fcmtest',
   );
 }

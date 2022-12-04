@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sappludable/providers/push_notifications_provider.dart';
 
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sappludable/providers/firebase_notifications_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -77,8 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(
                 onPressed: () async {
-                  await FirebaseMessaging.instance
-                      .subscribeToTopic('myTopic');
+                  await FirebaseMessaging.instance.subscribeToTopic('myTopic');
                 },
                 child: Text('Subscribe To Topic')),
             ElevatedButton(

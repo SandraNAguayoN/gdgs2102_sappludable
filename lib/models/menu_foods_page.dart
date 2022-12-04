@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sappludable/controllers/login_controller.dart';
-import 'package:sappludable/pages/recipes_page.dart';
-import 'package:sappludable/models/recipe.dart';
+import 'package:sappludable/models/food.dart';
+import 'package:sappludable/pages/foods_page.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MenuRecipesPage extends StatelessWidget {
+class MenuFoodsPage extends StatelessWidget {
   final controller = Get.put(LoginController());
-  String idCategoria;
-  String nombreCategoria;
-  MenuRecipesPage(this.idCategoria, this.nombreCategoria);
+  String idCategoriaAlimento;
+  String nombreCategoriaAlimento;
+  MenuFoodsPage(this.idCategoriaAlimento, this.nombreCategoriaAlimento);
   String idDocumento = "";
-  String idReceta = "";
-  String nombreReceta = "";
-  String imagenReceta = "";
-  String descripcionReceta = "";
-  //RecipesPage({Key? key}) : super(key: key);
+  String idAlimento = "";
+  String nombreAlimento = "";
+  String imagenAimento = "";
+  String descripcionAlimento = "";
+  //FoodsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(nombreCategoria),
+          title: Text(nombreCategoriaAlimento),
           leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => RecipesPage(),
+                  builder: (context) => FoodsPage(),
                 ));
               }),
           actions: <Widget>[
@@ -55,8 +55,9 @@ class MenuRecipesPage extends StatelessWidget {
           child: Center(
             child: StreamBuilder(
                 stream: FirebaseFirestore.instance
-                    .collection('recetas')
-                    .where("idCategoria", isEqualTo: this.idCategoria)
+                    .collection('alimentos')
+                    .where("idCategoriaAlimento",
+                        isEqualTo: this.idCategoriaAlimento)
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -73,18 +74,18 @@ class MenuRecipesPage extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         //String idCategoria = snapshot.data!.docs[index]["idCategoria"];
                         idDocumento = snapshot.data!.docs[index].id;
-                        idReceta = snapshot.data!.docs[index]["idReceta"];
-                        nombreReceta =
-                            snapshot.data!.docs[index]["nombreReceta"];
-                        imagenReceta =
-                            snapshot.data!.docs[index]["imagenReceta"];
-                        //descripcionReceta = snapshot.data!.docs[index]["descripcionReceta"];
-                        return _buildRecipeCard(
+                        idAlimento = snapshot.data!.docs[index]["idAlimento"];
+                        nombreAlimento =
+                            snapshot.data!.docs[index]["nombreAlimento"];
+                        imagenAimento =
+                            snapshot.data!.docs[index]["imagenAlimento"];
+                        //descripcionAlimento = snapshot.data!.docs[index]["descripcionAlimento"];
+                        return _buildFoodCard(
                             context,
                             idDocumento,
-                            idReceta,
-                            nombreReceta,
-                            'assets/images/recipes/' + imagenReceta,
+                            idAlimento,
+                            nombreAlimento,
+                            'assets/images/foods/' + imagenAimento,
                             64,
                             22,
                             1);
@@ -94,7 +95,7 @@ class MenuRecipesPage extends StatelessWidget {
         ));
   }
 
-  Widget _buildRecipeCard(
+  Widget _buildFoodCard(
       BuildContext context,
       String id,
       String idReceta,
@@ -122,7 +123,7 @@ class MenuRecipesPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Recipe(name, id),
+                      builder: (context) => Food(name, id),
                     ));
                   },
                   fillColor: Colors.white,

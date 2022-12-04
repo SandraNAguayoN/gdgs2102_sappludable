@@ -78,6 +78,10 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/logo_1.png
+    - assets/images/recipes/
+    - assets/images/foods/
+    - assets/images/foods/categorias/
+    - assets/images/character/
     
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

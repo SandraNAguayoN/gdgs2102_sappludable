@@ -13,20 +13,17 @@ class LoginController extends GetxController {
   void signInWithEmailAndPassword() async {
     try {
       final User? user = (await _auth.signInWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text
-      ))
+              email: emailController.text, password: passwordController.text))
           .user;
       Get.snackbar('Hola', 'Has ingresado exitosamente');
       print('Autenticación exitosa');
       Future.delayed(
         Duration(seconds: 2),
-            (){
+        () {
           Get.toNamed("/menupage");
         },
       );
-
-    } catch (e){
+    } catch (e) {
       Get.snackbar('Falló', 'Error: Revise su información',
           snackPosition: SnackPosition.BOTTOM);
     }
@@ -38,27 +35,27 @@ class LoginController extends GetxController {
 
   void signOut() async {
     final User? user = await _auth.currentUser;
-    if(user == null){
+    if (user == null) {
       Get.snackbar('Sesión cerrada', 'No se ha iniciado sesión',
           snackPosition: SnackPosition.BOTTOM);
       return;
     }
     _signOut();
     final String uid = user.uid;
-    Get.snackbar('Cerró sesión', uid+'ha cerrado sesión exitosamente',
+    Get.snackbar('Cerró sesión', uid + 'ha cerrado sesión exitosamente',
         snackPosition: SnackPosition.BOTTOM);
     Get.toNamed("/homepage");
   }
 
-
   void signInWithGoogle() async {
-    try{
+    try {
       UserCredential userCredential;
 
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if(googleUser == null) return null;
+      if (googleUser == null) return null;
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -68,17 +65,13 @@ class LoginController extends GetxController {
       //await FirebaseAuth.instance.signInWithCredential(credential);
 
       final user = userCredential.user;
-      if(user != null && user.uid != null){
+      if (user != null && user.uid != null) {
         Get.snackbar('Hola', 'Sign In ${user.uid} with Google');
         print('Ingresó correctamente');
       }
-      Future.delayed(
-          Duration(seconds: 2),
-              (){
-            Get.toNamed('/menupage');
-          }
-
-      );
+      Future.delayed(Duration(seconds: 2), () {
+        Get.toNamed('/menupage');
+      });
     } catch (e) {
       print(e);
       Get.snackbar('Falló', 'Failed to sign in with Google: $e',

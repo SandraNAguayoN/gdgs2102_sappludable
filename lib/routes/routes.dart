@@ -9,6 +9,7 @@ import '../pages/recipes_page.dart';
 import '../pages/routines_page.dart';
 import '../pages/user_profile_page.dart';
 import '../pages/notifications_page.dart';
+import '../pages/credits_page.dart';
 
 routes() => [
   GetPage(name: "/homepage", page: () => HomePage()),
@@ -21,4 +22,5 @@ routes() => [
   GetPage(name: "/foodspage", page: () => FoodsPage(), transition: Transition.zoom),
   GetPage(name: "/recipespage", page: () => RecipesPage(), transition: Transition.zoom),
   GetPage(name: "/notificationspage", page: () => NotificationsPage(), transition: Transition.zoom),
+  GetPage(name: "/creditspage", page: () => CreditsPage(), transition: Transition.zoom),
 ];
