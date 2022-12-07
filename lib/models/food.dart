@@ -165,30 +165,6 @@ class Food extends StatelessWidget {
               )),
         ),
         SizedBox(height: 10.0),
-        Card(
-          borderOnForeground: true,
-          elevation: 10.0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          child: Container(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Más contenido proximamente.",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Quicksand',
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                      fontStyle: FontStyle.italic,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                  SizedBox(height: 10),
-                ],
-              )),
-        ),
       ],
     );
   }
